@@ -13,7 +13,7 @@
             <div class="col-lg-8">
                 <h2>News Archive</h2>
                 {% for item in news_items %}
-                <h3>{{ item.news_title }}:</h3>
+                <h3><a href="/news/ {{ item.news_id }}">{{ item.news_title }}:</a></h3>
                 <p>{{ item.date }}</p>
                 {% endfor %}
             </div>

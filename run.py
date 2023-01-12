@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html")
-    
+
 
 @app.route("/about")
 def about():
@@ -22,6 +22,17 @@ def news():
     with open("data/news.json", "r") as json_data:
         data = json.load(json_data)
     return render_template("news.html", news_items=data)
+
+
+@app.route("/news/<news_id>")
+def archive(news_id):
+    news = {}
+    with open("data/news.json", "r") as json_data:
+        data = json.load(json_data)
+        for obj in data:
+            if obj["news_id"] == news_id:
+                news = obj
+    return render_template("archive.html", news=news)
 
 
 @app.route("/contact")
